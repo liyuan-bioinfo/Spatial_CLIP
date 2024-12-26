@@ -1,6 +1,7 @@
 # Transform OME-ITFF to the compatible tif image (pyramidal tiff)
-(Introduction)[https://andrewjanowczyk.com/converting-an-existing-image-into-an-openslide-compatible-format/]
-(Tool:ImageMagick)[https://github.com/ImageMagick/ImageMagick/blob/main/Install-unix.txt]
+- (Introduction)[https://andrewjanowczyk.com/converting-an-existing-image-into-an-openslide-compatible-format/]
+
+- (Tool:ImageMagick)[https://github.com/ImageMagick/ImageMagick/blob/main/Install-unix.txt]
 Download & Unpack
   
 Download
