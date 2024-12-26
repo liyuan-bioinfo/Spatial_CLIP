@@ -3,6 +3,12 @@
 - [Download](https://imagemagick.org/archive/ImageMagick.tar.gz)
 - [Install](https://github.com/ImageMagick/ImageMagick/blob/main/Install-unix.txt)
 
+## Evaluation of tiff
+
+    $ import openslide
+    $ slide_path = "demo/output.tif"
+    $ osh  = openslide.OpenSlide(slide_path) # error or not
+
 ## Details of installing ImageMagick on Linux system
 
     
