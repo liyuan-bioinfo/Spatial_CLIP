@@ -1,9 +1,9 @@
 # Transform OME-ITFF to the compatible tif image (pyramidal tiff)
 - [Introduction](https://andrewjanowczyk.com/converting-an-existing-image-into-an-openslide-compatible-format/)
 
-- (Tool:ImageMagick)[https://github.com/ImageMagick/ImageMagick/blob/main/Install-unix.txt]
-Download & Unpack
-  
+- [Tool:ImageMagick](https://github.com/ImageMagick/ImageMagick/blob/main/Install-unix.txt)
+
+## Details of installing ImageMagick on Linux system
 Download
   https://imagemagick.org/archive/ImageMagick.tar.gz.
     
@@ -28,16 +28,10 @@ Install
 
   To confirm your installation of the ImageMagick distribution was successful,
   ensure that the installation directory is in your executable search path
-  and type:
-  
+  and type:  
     $ display
 
-# https://andrewjanowczyk.com/converting-an-existing-image-into-an-openslide-compatible-format/
-# https://iipimage.sourceforge.io/documentation/images/
-# Conversion using ImageMagick
-You can also use ImageMagick (version 6.4.7-10 and upwards) to create Tiled Pyramid TIFF. In this case use the convert command. 
-For example, to generate a 256x256 pyramid tiled tiff using JPEG compression:
-
+## Conversion using ImageMagick
     $ convert input -define tiff:tile-geometry=256x256 -compress jpeg 'ptif:output.tif'
     input: source image - can be any kind of image supported by ImageMagick (almost all)
     ptif: specify your image format as pyramid tiff
