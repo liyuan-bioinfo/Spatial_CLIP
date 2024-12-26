@@ -8,6 +8,7 @@ Download
   https://imagemagick.org/archive/ImageMagick.tar.gz.
     
 Unpack
+
     $ tar xvfz ImageMagick.tar.gz
     
 Configure
