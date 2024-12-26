@@ -3,7 +3,8 @@
 
 ## Details of installing ImageMagick on Linux system
 [Download](https://imagemagick.org/archive/ImageMagick.tar.gz)
-[Tool:ImageMagick](https://github.com/ImageMagick/ImageMagick/blob/main/Install-unix.txt)
+
+[Install](https://github.com/ImageMagick/ImageMagick/blob/main/Install-unix.txt)
     
 Unpack
 
