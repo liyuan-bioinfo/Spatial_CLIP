@@ -1,10 +1,10 @@
 # Transform OME-ITFF to the compatible tif image (pyramidal tiff)
 - [Introduction](https://andrewjanowczyk.com/converting-an-existing-image-into-an-openslide-compatible-format/)
+- [Download](https://imagemagick.org/archive/ImageMagick.tar.gz)
+- [Install](https://github.com/ImageMagick/ImageMagick/blob/main/Install-unix.txt)
 
 ## Details of installing ImageMagick on Linux system
-[Download](https://imagemagick.org/archive/ImageMagick.tar.gz)
 
-[Install](https://github.com/ImageMagick/ImageMagick/blob/main/Install-unix.txt)
     
 Unpack
 
