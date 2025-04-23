@@ -190,9 +190,7 @@ for i in range(samples_df.shape[0]):
         
         # add brightness
         print(f"Adjust brightness of channel...")        
-        Adjusted_image_path = adjust_brightness(input_path=clipped_image_path)
-
-        # extract tiles with valid coord_df        
+        Adjusted_image_path = adjust_brightness(input_path=clipped_image_path)        
 
 
                     
