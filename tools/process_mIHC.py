@@ -21,7 +21,9 @@ from skimage.measure import block_reduce
 from skimage.exposure import rescale_intensity
 import cv2
 
-
+# 基于高斯平滑降低异常亮度对于整体的影响
+#@input_path 单通道的tiff路径
+#@return 调整后的tiff路径
 def adjust_brightness(input_path, target_brightness=150):
 
     savefig_path = input_path.replace(".tiff", "_adjust_brightness.tiff")    
@@ -47,6 +49,9 @@ def adjust_brightness(input_path, target_brightness=150):
 
     return savefig_path
 
+# 基于q1, q99的策略去除tiff的背景以及极端异常值
+#@input_path 单通道的tiff路径
+#@return 调整后的tiff路径
 def process_perc_clipped_image(input_path):
 
     savefig_path = input_path.replace(".tiff", "_cliped.tiff")
@@ -87,7 +92,10 @@ def downsample_manual(image, factor=2):
     return block_reduce(image, block_size=(factor, factor), func=np.mean)
 
 
-# 调整生成预览图的函数。
+# 使用下采样的方式，生成tiff的预览图
+#@input_path 单通道的tiff路径
+#@scale_factor 默认的下采样倍数
+#@return 调整后的tiff路径
 def create_thumbnail_mIHC(input_path, level=0, scale_factor=0.1):
 
     thumbnail_path = input_path.replace(".tiff", "_thumbnail.png")
@@ -106,6 +114,11 @@ def create_thumbnail_mIHC(input_path, level=0, scale_factor=0.1):
         plt.savefig(thumbnail_path)     
         print(f"Saved thumbnail: {os.path.basename(thumbnail_path)}")
 
+# 将原始的channel转换成目标分辨率的tiff
+#@input_path 单通道的tiff路径
+#@input_per_um_pixel 当前的mIHC分辨率，默认参数是40X
+#@target_per_um_pixel 调整后的mIHC分辨率，与H&E保持一致
+#@return 调整后的tiff路径
 def scaled_image_mIHC(input_path, input_per_um_pixel=0.163343757390976, target_per_um_pixel=0.5, level=0):
     # save the scaled image
     savefig_path = input_path.replace(".tiff", "_scaled.tiff") # return path of scaled tiff
@@ -120,11 +133,8 @@ def scaled_image_mIHC(input_path, input_per_um_pixel=0.163343757390976, target_p
                 slide.read_region((0, 0), level, (width, height))
                 .convert('RGB')
                 .resize((int(width*scaled_factor), int(height*scaled_factor)))
-            )
-        
-
+            )        
         img_scaled = cv2.cvtColor(img_scaled, cv2.COLOR_BGR2GRAY)  # 注意OpenCV是BGR顺序
-
 
     with tifffile.TiffWriter(savefig_path) as tif:
         tif.write(img_scaled, compression=None, photometric='minisblack', tile=(256, 256))
@@ -162,7 +172,8 @@ for i in range(samples_df.shape[0]):
 
     # Copy files if needed
     source_mIHC_folder = f"{data_dir}/{dataset_id}/mIHC"
-        
+
+    # 从data目录拷贝目标文件到分析目录
     if os.path.exists(source_mIHC_folder):
         for file in os.listdir(source_mIHC_folder):
             if file.lower().endswith(('.tiff', '.tif')):
